@@ -1,0 +1,142 @@
+{
+    "key": "group_rp_realisation",
+    "title": "Détails de la réalisation",
+    "fields": [
+        {
+            "key": "field_rp_accroche",
+            "label": "Accroche projet",
+            "name": "rp_accroche",
+            "type": "text",
+            "instructions": "60 à 70 caractères, orientée bénéfice (sert de H1 / meta).",
+            "required": 1,
+            "maxlength": 90
+        },
+        {
+            "key": "field_rp_photo_avant",
+            "label": "Photo AVANT",
+            "name": "rp_photo_avant",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": "jpg,jpeg,png,webp,avif"
+        },
+        {
+            "key": "field_rp_photo_apres",
+            "label": "Photo APRÈS",
+            "name": "rp_photo_apres",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": "jpg,jpeg,png,webp,avif"
+        },
+        {
+            "key": "field_rp_galerie",
+            "label": "Galerie du chantier",
+            "name": "rp_galerie",
+            "type": "gallery",
+            "return_format": "id",
+            "insert": "append",
+            "library": "all"
+        },
+        {
+            "key": "field_rp_budget",
+            "label": "Budget (€)",
+            "name": "rp_budget",
+            "type": "number",
+            "instructions": "Montant indicatif, affiché « à partir de ».",
+            "min": 0,
+            "step": 100
+        },
+        {
+            "key": "field_rp_budget_label",
+            "label": "Tranche de budget affichée",
+            "name": "rp_budget_label",
+            "type": "select",
+            "choices": {
+                "<15k": "Moins de 15 000 €",
+                "15-30k": "15 000 – 30 000 €",
+                "30-60k": "30 000 – 60 000 €",
+                "60-100k": "60 000 – 100 000 €",
+                ">100k": "Plus de 100 000 €"
+            },
+            "return_format": "value",
+            "allow_null": 1
+        },
+        {
+            "key": "field_rp_duree",
+            "label": "Durée du chantier",
+            "name": "rp_duree",
+            "type": "text",
+            "placeholder": "Ex. 6 semaines"
+        },
+        {
+            "key": "field_rp_zone_texte",
+            "label": "Zone géographique (texte)",
+            "name": "rp_zone_texte",
+            "type": "text",
+            "instructions": "Ville + code postal. Pensez à renseigner aussi la taxonomie « Zone ».",
+            "placeholder": "Ex. Lyon (69003)"
+        },
+        {
+            "key": "field_rp_types",
+            "label": "Types de travaux",
+            "name": "rp_types",
+            "type": "taxonomy",
+            "taxonomy": "type_travaux",
+            "field_type": "multi_select",
+            "add_term": 0,
+            "return_format": "id",
+            "save_terms": 1,
+            "load_terms": 1
+        },
+        {
+            "key": "field_rp_prestations",
+            "label": "Prestations réalisées",
+            "name": "rp_prestations",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Ajouter une prestation",
+            "sub_fields": [
+                {
+                    "key": "field_rp_prestation_item",
+                    "label": "Prestation",
+                    "name": "item",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_rp_descriptif",
+            "label": "Descriptif détaillé",
+            "name": "rp_descriptif",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "media_upload": 1
+        },
+        {
+            "key": "field_rp_featured",
+            "label": "Mettre en avant sur l'accueil",
+            "name": "rp_featured",
+            "type": "true_false",
+            "ui": 1,
+            "default_value": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "realisations"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "description": "Champs métier d'une réalisation (Avant/Après, budget, durée, zone, prestations)."
+}

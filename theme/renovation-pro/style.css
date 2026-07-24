@@ -1,0 +1,18 @@
+/*
+Theme Name:  Renovation Pro
+Theme URI:   https://example.com/
+Description: Thème sur-mesure BTP / Rénovation — orienté performance (Core Web Vitals),
+             SEO local (GeneralContractor JSON-LD) et conversion de leads.
+Author:      Hammasoft
+Version:     1.0.0
+Requires at least: 6.4
+Requires PHP: 8.2
+Text Domain: renovation-pro
+License:     GPL-2.0-or-later
+*/
+
+/*
+ * Ce fichier ne sert qu'à l'en-tête du thème.
+ * Les styles de production sont compilés (Tailwind ou CSS sur-mesure) vers
+ * /assets/css/app.css et chargés via inc/setup.php (wp_enqueue_style).
+ */

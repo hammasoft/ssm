@@ -1,0 +1,112 @@
+{
+    "key": "group_rp_avis",
+    "title": "Témoignage client",
+    "fields": [
+        {
+            "key": "field_rp_client_nom",
+            "label": "Nom du client",
+            "name": "rp_client_nom",
+            "type": "text",
+            "required": 1,
+            "placeholder": "Ex. Famille Martin"
+        },
+        {
+            "key": "field_rp_client_ville",
+            "label": "Localité",
+            "name": "rp_client_ville",
+            "type": "text",
+            "placeholder": "Ex. Villeurbanne"
+        },
+        {
+            "key": "field_rp_note",
+            "label": "Note (sur 5)",
+            "name": "rp_note",
+            "type": "number",
+            "required": 1,
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "default_value": 5
+        },
+        {
+            "key": "field_rp_temoignage",
+            "label": "Témoignage",
+            "name": "rp_temoignage",
+            "type": "textarea",
+            "required": 1,
+            "rows": 4,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_rp_type",
+            "label": "Prestation concernée",
+            "name": "rp_type",
+            "type": "taxonomy",
+            "taxonomy": "type_travaux",
+            "field_type": "select",
+            "add_term": 0,
+            "return_format": "id",
+            "save_terms": 1,
+            "load_terms": 1,
+            "allow_null": 1
+        },
+        {
+            "key": "field_rp_verifie",
+            "label": "Avis vérifié",
+            "name": "rp_verifie",
+            "type": "true_false",
+            "instructions": "Seuls les avis vérifiés alimentent la note agrégée (Schema.org).",
+            "ui": 1,
+            "default_value": 0
+        },
+        {
+            "key": "field_rp_source",
+            "label": "Source de l'avis",
+            "name": "rp_source",
+            "type": "select",
+            "choices": {
+                "google": "Google",
+                "site": "Formulaire du site",
+                "bouche-a-oreille": "Bouche-à-oreille"
+            },
+            "return_format": "value",
+            "default_value": "site"
+        },
+        {
+            "key": "field_rp_date",
+            "label": "Date de l'avis",
+            "name": "rp_date",
+            "type": "date_picker",
+            "display_format": "d/m/Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
+            "key": "field_rp_realisation",
+            "label": "Réalisation liée",
+            "name": "rp_realisation",
+            "type": "post_object",
+            "post_type": [
+                "realisations"
+            ],
+            "return_format": "id",
+            "ui": 1,
+            "allow_null": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "avis_clients"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "description": "Champs d'un témoignage client vérifié (note, source, date, prestation, réalisation liée)."
+}
