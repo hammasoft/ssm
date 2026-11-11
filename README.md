@@ -50,5 +50,8 @@ Projet : site vitrine haut de gamme, ultrarapide, orienté **acquisition de lead
 
 ## Thème IPTV Pro (abonnement IPTV)
 
-Thème WordPress autonome pour un service d'abonnement IPTV : `theme/iptv-pro/`
-(documentation : `theme/iptv-pro/README.md`). Zip prêt à téléverser : **`dist/iptv-pro.zip`**.
+| Élément | Source | Zip prêt à téléverser |
+|---|---|---|
+| Thème IPTV Pro (pages, 22 articles SEO, avis clients, SEO) | `theme/iptv-pro/` | **`dist/iptv-pro.zip`** |
+| Plugin IPTV Offer Booster (offre marketing, 5 modèles) | `plugins/iptv-offer-booster/` | **`dist/iptv-offer-booster.zip`** |
+| Audit SEO concurrentiel | `docs/iptv-seo-audit.md` | — |

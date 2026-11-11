@@ -163,6 +163,14 @@ function iptvp_faq() {
 			'a' => __( 'Redémarrez votre box Internet et votre appareil, privilégiez une connexion filaire, puis videz le cache de l’application. Si le problème persiste, contactez notre support : nous vous aidons en direct sur WhatsApp.', 'iptv-pro' ),
 		),
 		array(
+			'q' => __( 'Qu’est-ce qu’un code IPTV (Xtream Codes ou M3U) ?', 'iptv-pro' ),
+			'a' => __( 'Le « code IPTV » désigne vos identifiants d’accès. Le format Xtream Codes comprend une URL de serveur, un nom d’utilisateur et un mot de passe ; le lien M3U est une adresse unique qui contient la playlist. Les deux fonctionnent avec IPTV Smarters Pro ; Xtream Codes est recommandé car il charge aussi le guide TV et la VOD.', 'iptv-pro' ),
+		),
+		array(
+			'q' => __( 'L’IPTV est-elle légale en France ?', 'iptv-pro' ),
+			'a' => __( 'Oui, la technologie IPTV est légale : c’est elle qu’utilisent les box des opérateurs. Ce qui compte, c’est que les contenus soient diffusés avec l’autorisation des ayants droit. Les applications comme IPTV Smarters Pro sont de simples lecteurs, légaux eux aussi.', 'iptv-pro' ),
+		),
+		array(
 			/* translators: %s: brand name */
 			'q' => sprintf( __( 'Proposez-vous un test avant d’acheter chez %s ?', 'iptv-pro' ), $brand ),
 			'a' => __( 'Oui, un test de courte durée peut être demandé via WhatsApp afin de vérifier la compatibilité de votre appareil et la qualité de votre connexion avant de vous abonner.', 'iptv-pro' ),
@@ -171,13 +179,14 @@ function iptvp_faq() {
 }
 
 /**
- * Témoignages : vide par défaut. N'ajoutez que de VRAIS avis clients
- * (les faux avis sont interdits — art. L121-4 du Code de la consommation).
+ * Témoignages : les 9 derniers avis publiés dans « Avis clients » (inc/reviews.php).
+ * N'ajoutez que de VRAIS avis clients (faux avis interdits — art. L121-4 C. conso).
  *
  * add_filter( 'iptvp_testimonials', fn() => [ [ 'name' => 'Karim, Lyon', 'text' => '...', 'rating' => 5 ] ] );
  */
 function iptvp_testimonials() {
-	return apply_filters( 'iptvp_testimonials', array() );
+	$items = function_exists( 'iptvp_published_reviews' ) ? iptvp_published_reviews( 9 ) : array();
+	return apply_filters( 'iptvp_testimonials', $items );
 }
 
 /**

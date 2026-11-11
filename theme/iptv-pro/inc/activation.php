@@ -62,25 +62,20 @@ function iptvp_blocks( array $parts ) {
 	return $out;
 }
 
-function iptvp_install_content() {
-	if ( get_option( 'iptvp_installed' ) ) {
+function iptvp_install_content( $force = false ) {
+	if ( get_option( 'iptvp_installed' ) && ! $force ) {
 		return;
 	}
 	$brand = iptvp_opt( 'brand' );
 	$email = iptvp_opt( 'email' );
 
 	// --- Pages principales -------------------------------------------------
-	$home = iptvp_ensure_post( 'accueil', __( 'Accueil', 'iptv-pro' ), '', array(
-		'meta' => array(
-			/* translators: %s brand */
-			'_iptvp_title' => sprintf( 'Abonnement IPTV Premium 4K – IPTV Smarters Pro | %s', $brand ),
-		),
-	) );
+	$home = iptvp_ensure_post( 'accueil', __( 'Accueil', 'iptv-pro' ) );
 
 	$tarifs = iptvp_ensure_post( 'tarifs', __( 'Tarifs abonnement IPTV', 'iptv-pro' ), iptvp_blocks( array(
 		'Comparez nos formules d’abonnement IPTV de 1 à 24 mois. Toutes incluent l’ensemble des chaînes, la VOD, la qualité 4K/FHD, le guide TV et le support 7j/7. Seule la durée change : plus elle est longue, plus le prix mensuel est bas.',
 	) ), array( 'meta' => array(
-		'_iptvp_title' => sprintf( 'Prix Abonnement IPTV : 1, 3, 6, 12 mois | %s', $brand ),
+		'_iptvp_title' => sprintf( 'Prix Abonnement IPTV 3, 6, 12 & 24 mois sans engagement | %s', $brand ),
 		'_iptvp_desc'  => 'Tarifs abonnement IPTV sans engagement : formules 1, 3, 6, 12 et 24 mois, chaînes en direct + VOD 4K, compatible IPTV Smarters Pro. Activation immédiate.',
 	) ) );
 
@@ -115,6 +110,13 @@ function iptvp_install_content() {
 	) ), array( 'meta' => array(
 		'_iptvp_title' => sprintf( 'Contact & Support IPTV 7j/7 | %s', $brand ),
 		'_iptvp_desc'  => 'Contactez notre support IPTV par WhatsApp, e-mail ou Telegram : aide à l’installation, test gratuit, questions sur les abonnements. Réponse rapide 7j/7.',
+	) ) );
+
+	iptvp_ensure_post( 'laisser-un-avis', __( 'Laisser un avis', 'iptv-pro' ), iptvp_blocks( array(
+		'Vous utilisez notre service IPTV ? Partagez votre expérience : votre avis aide les futurs abonnés à faire leur choix. Chaque avis est vérifié avant publication.',
+	) ) . "<!-- wp:shortcode -->\n[iptv_avis_form]\n<!-- /wp:shortcode -->\n", array( 'meta' => array(
+		'_iptvp_title' => sprintf( 'Donner votre avis sur notre abonnement IPTV | %s', $brand ),
+		'_iptvp_desc'  => 'Partagez votre expérience avec notre abonnement IPTV : qualité d’image, stabilité, installation et support. Avis vérifiés avant publication.',
 	) ) );
 
 	$blog = iptvp_ensure_post( 'blog', __( 'Blog IPTV', 'iptv-pro' ), '', array( 'meta' => array(
@@ -182,6 +184,7 @@ function iptvp_install_content() {
 			'meta'          => array( '_iptvp_desc' => $post['excerpt'] ),
 		) );
 	}
+	iptvp_import_articles();
 
 	// --- Lecture & permaliens ---------------------------------------------
 	if ( $home ) {
@@ -213,6 +216,7 @@ function iptvp_install_content() {
 			array( 'page', $install, __( 'Installer IPTV Smarters Pro', 'iptv-pro' ) ),
 			array( 'page', $faq, __( 'FAQ IPTV', 'iptv-pro' ) ),
 			array( 'page', $contact, __( 'Support', 'iptv-pro' ) ),
+			array( 'page', (int) ( get_page_by_path( 'laisser-un-avis' )->ID ?? 0 ), __( 'Laisser un avis', 'iptv-pro' ) ),
 		) ),
 		'legal'   => array( __( 'Informations légales', 'iptv-pro' ), array_map(
 			fn( $slug ) => array( 'page', $legal_ids[ $slug ] ?? 0, $legal[ $slug ][0] ),

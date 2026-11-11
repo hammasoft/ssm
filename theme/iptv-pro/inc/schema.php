@@ -137,9 +137,20 @@ add_action( 'wp_head', function () {
 					), $plans ),
 				),
 			);
-			// Note agrégée UNIQUEMENT si des avis réels sont renseignés.
-			$rating = (float) str_replace( ',', '.', (string) iptvp_opt( 'rating' ) );
-			$count  = (int) iptvp_opt( 'rating_count' );
+			// Note agrégée UNIQUEMENT à partir d'avis réels : avis publiés sur le site,
+			// sinon note saisie dans le Customizer (ex. avis vérifiés Trustpilot).
+			$stats  = function_exists( 'iptvp_review_stats' ) ? iptvp_review_stats() : array( 'count' => 0 );
+			$rating = $stats['count'] ? (float) $stats['average'] : (float) str_replace( ',', '.', (string) iptvp_opt( 'rating' ) );
+			$count  = $stats['count'] ? (int) $stats['count'] : (int) iptvp_opt( 'rating_count' );
+			if ( $stats['count'] ) {
+				$product['review'] = array_map( fn( $r ) => array(
+					'@type'         => 'Review',
+					'author'        => array( '@type' => 'Person', 'name' => $r['author'] ),
+					'datePublished' => $r['date'],
+					'reviewBody'    => $r['text'],
+					'reviewRating'  => array( '@type' => 'Rating', 'ratingValue' => $r['rating'], 'bestRating' => 5 ),
+				), iptvp_published_reviews( 9 ) );
+			}
 			if ( $rating > 0 && $count > 0 ) {
 				$product['aggregateRating'] = array(
 					'@type'       => 'AggregateRating',
@@ -188,6 +199,24 @@ add_action( 'wp_head', function () {
 			'mainEntityOfPage' => array( '@id' => $url . '#webpage' ),
 			'inLanguage'       => get_bloginfo( 'language' ),
 		);
+	}
+
+	// FAQ des articles du blog (contenu visible en bas de l'article).
+	if ( is_singular( 'post' ) && function_exists( 'iptvp_articles' ) ) {
+		$slug     = get_post_field( 'post_name', get_queried_object_id() );
+		$articles = iptvp_articles();
+		if ( ! empty( $articles[ $slug ]['faq'] ) ) {
+			$graph[] = array(
+				'@type'      => 'FAQPage',
+				'@id'        => $url . '#faq',
+				'isPartOf'   => array( '@id' => $url . '#webpage' ),
+				'mainEntity' => array_map( fn( $f ) => array(
+					'@type'          => 'Question',
+					'name'           => $f[0],
+					'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $f[1] ),
+				), $articles[ $slug ]['faq'] ),
+			);
+		}
 	}
 
 	$json = array(

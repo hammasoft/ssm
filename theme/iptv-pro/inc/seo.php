@@ -68,7 +68,7 @@ add_filter( 'pre_get_document_title', function ( $title ) {
 	if ( is_front_page() ) {
 		$custom = is_page() ? get_post_meta( get_queried_object_id(), '_iptvp_title', true ) : '';
 		/* translators: %s: brand */
-		return $custom ?: sprintf( __( 'Abonnement IPTV Premium 4K – IPTV Smarters Pro | %s', 'iptv-pro' ), iptvp_opt( 'brand' ) );
+		return $custom ?: sprintf( __( 'Abonnement IPTV France %1$s – IPTV Smarters Pro 4K | %2$s', 'iptv-pro' ), wp_date( 'Y' ), iptvp_opt( 'brand' ) );
 	}
 	if ( is_singular() ) {
 		$custom = get_post_meta( get_queried_object_id(), '_iptvp_title', true );

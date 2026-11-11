@@ -10,12 +10,33 @@ guides d'installation, FAQ, blog, SEO avancé. Aucun plugin requis.
    - les pages **Accueil** (page d'accueil statique), **Tarifs**, **Installation IPTV** + 6 guides
      (Smart TV, Fire TV Stick, Android, iOS/Apple TV, PC/Mac, MAG), **FAQ**, **Contact**, **Blog** ;
    - les pages légales **Mentions légales, CGV, Politique de remboursement, Politique de confidentialité** ;
-   - 3 articles de blog SEO (installation IPTV Smarters Pro, débit Internet, choix de l'appareil) ;
+   - **22 articles de blog SEO** (3 de départ + 19 articles ciblés, chacun avec sa FAQ), classés en
+     4 catégories : Guides IPTV, Applications IPTV, Dépannage IPTV, Bien choisir son IPTV ;
+   - la page **Laisser un avis** (formulaire public d'avis clients modéré) ;
    - les menus (principal, pied de page, légal) et les permaliens `/%postname%/`.
 3. **Apparence > Personnaliser > IPTV Pro** : nom de marque, prix, devise, numéro WhatsApp, e-mail,
    réseaux sociaux, URL de paiement, Google Search Console, Bing, GA4.
 4. **Apparence > Personnaliser > Identité du site** : logo et icône.
 5. Complétez les champs `[entre crochets]` des pages légales (obligatoire en France : LCEN, Code de la consommation).
+
+## Thème déjà activé ? Importer les nouveaux contenus
+
+**Apparence > Contenus IPTV Pro** :
+- « Créer les pages manquantes » (ex. *Laisser un avis*) — les pages existantes ne sont jamais modifiées ;
+- « Importer les articles manquants » : tout publier maintenant, ou **programmer 1 article tous les N jours**
+  (recommandé : un rythme régulier envoie un signal de fraîcheur à Google).
+
+## Avis clients
+
+- Menu **Avis clients** : ajoutez les avis reçus (WhatsApp, e-mail…) avec note, ville et appareil,
+  ou laissez vos clients les déposer via la page **/laisser-un-avis/** (shortcode `[iptv_avis_form]`).
+- Les avis déposés arrivent **en attente** et vous êtes prévenu par e-mail ; vous les publiez après vérification.
+- Protection anti-spam : pot de miel, nonce, 1 avis / IP / 10 min, consentement RGPD.
+- La section « Avis clients » de l'accueil affiche les 9 derniers avis publiés et la note moyenne ;
+  elle reste masquée tant qu'aucun avis n'est publié.
+- La note moyenne et les avis sont ajoutés automatiquement au JSON-LD `Product` (étoiles dans Google possibles).
+- **Uniquement des avis réels** : les faux avis sont interdits (art. L121-4 du Code de la consommation,
+  jusqu'à 300 000 € d'amende) et sanctionnés par Google.
 
 ## Architecture SEO
 
@@ -26,7 +47,10 @@ guides d'installation, FAQ, blog, SEO avancé. Aucun plugin requis.
 | /installation-iptv/ (page pilier) | installation IPTV Smarters Pro | BreadcrumbList |
 | /installation-iptv/{appareil}/ | IPTV Smart TV, IPTV Firestick… | HowTo, BreadcrumbList |
 | /faq/ | questions IPTV | FAQPage |
-| Articles | requêtes informationnelles (longue traîne) | BlogPosting |
+| Articles (22) | requêtes informationnelles (longue traîne) | BlogPosting, FAQPage, BreadcrumbList |
+
+L'audit concurrentiel complet (concurrents en 1re page, clusters de mots-clés, lacunes, plan 90 jours)
+est dans `docs/iptv-seo-audit.md` à la racine du dépôt.
 
 **Inclus dans le thème :**
 - Balise `<title>` et **meta description** sur chaque page (meta box « SEO » dans l'éditeur, + case *noindex*).

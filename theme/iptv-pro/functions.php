@@ -17,6 +17,8 @@ foreach ( array(
 	'customizer',   // marque, prix, WhatsApp, réseaux sociaux.
 	'data',         // offres, avantages, FAQ, guides (source unique de vérité).
 	'helpers',      // fonctions d'affichage réutilisables.
+	'reviews',      // avis clients réels (CPT + formulaire modéré).
+	'articles',     // 19 articles SEO + outil d'import.
 	'seo',          // title, meta description, canonical, Open Graph, Twitter, robots.
 	'schema',       // JSON-LD.
 	'performance',  // nettoyage wp_head, preload, defer.

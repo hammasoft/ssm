@@ -1,0 +1,41 @@
+/* IPTV Offer Booster — admin */
+.iob-admin { max-width: 1100px; }
+.iob-status { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; vertical-align: middle; margin-left: 8px; }
+.iob-status--on { background: #d1fae5; color: #065f46; }
+.iob-status--off { background: #e5e7eb; color: #374151; }
+.iob-status--expired { background: #fee2e2; color: #991b1b; }
+.iob-stats { display: flex; gap: 12px; flex-wrap: wrap; align-items: stretch; margin: 16px 0; }
+.iob-stats > div { background: #fff; border: 1px solid #dcdcde; border-radius: 8px; padding: 12px 20px; min-width: 120px; }
+.iob-stats strong { display: block; font-size: 24px; line-height: 1.2; }
+.iob-stats span { color: #646970; }
+.iob-stats .description { flex-basis: 100%; margin: 0; }
+.iob-section { background: #fff; border: 1px solid #dcdcde; border-radius: 10px; padding: 8px 22px 18px; margin: 18px 0; }
+.iob-section h2 { display: flex; align-items: center; gap: 10px; }
+.iob-section h2 span { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: #7c3aed; color: #fff; font-size: 13px; }
+.iob-switch { font-size: 14px; font-weight: 600; }
+.iob-presets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.iob-templates { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+.iob-tpl { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 12px; border: 2px solid #dcdcde; border-radius: 10px; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+.iob-tpl:hover { border-color: #a78bfa; }
+.iob-tpl input { position: absolute; opacity: 0; }
+.iob-tpl:has(input:checked) { border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124,58,237,.18); }
+.iob-tpl:has(input:focus-visible) { outline: 2px solid #2271b1; }
+.iob-tpl small { color: #646970; line-height: 1.4; }
+.iob-tpl a { font-size: 12px; margin-top: auto; }
+/* Miniatures des modèles */
+.iob-tpl__thumb { position: relative; display: block; height: 96px; border-radius: 6px; background: repeating-linear-gradient(#f0f0f1 0 8px, #fff 8px 16px); overflow: hidden; border: 1px solid #e5e7eb; }
+.iob-tpl__thumb i, .iob-tpl__thumb b { position: absolute; display: block; background: linear-gradient(135deg, #7c3aed, #2563eb); border-radius: 4px; }
+.iob-tpl__thumb--topbar i { top: 0; left: 0; right: 0; height: 14px; border-radius: 0; }
+.iob-tpl__thumb--topbar b { display: none; }
+.iob-tpl__thumb--popup i, .iob-tpl__thumb--exit i { inset: 0; background: rgba(0,0,0,.45); border-radius: 0; }
+.iob-tpl__thumb--popup b, .iob-tpl__thumb--exit b { top: 18px; left: 30%; right: 30%; bottom: 18px; border-radius: 6px; }
+.iob-tpl__thumb--exit::after { content: "↑"; position: absolute; top: 2px; right: 8px; font-weight: 700; color: #fff; }
+.iob-tpl__thumb--slidein i { display: none; }
+.iob-tpl__thumb--slidein b { right: 8px; bottom: 8px; width: 40%; height: 40%; }
+.iob-tpl__thumb--banner i { top: 0; left: 0; right: 0; height: 10px; background: #1e1e2f; border-radius: 0; }
+.iob-tpl__thumb--banner b { top: 18px; left: 10px; right: 10px; height: 38px; }
+.iob-colors { display: flex; flex-wrap: wrap; gap: 14px; }
+.iob-color { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 10px 6px 6px; border: 2px solid #dcdcde; border-radius: 8px; }
+.iob-color input { position: absolute; opacity: 0; }
+.iob-color:has(input:checked) { border-color: #7c3aed; }
+.iob-color span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 6px; font-weight: 800; }

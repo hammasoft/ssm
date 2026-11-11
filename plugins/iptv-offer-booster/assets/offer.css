@@ -1,0 +1,80 @@
+/* IPTV Offer Booster — styles publics (indépendants du thème). */
+.iob { --iob-c1: #7c3aed; --iob-c2: #2563eb; --iob-fg: #fff; font-family: inherit; line-height: 1.45; box-sizing: border-box; }
+.iob *, .iob *::before, .iob *::after { box-sizing: border-box; }
+.iob[hidden] { display: none !important; }
+.iob-card, .iob-dialog { position: relative; color: var(--iob-fg); background: linear-gradient(135deg, var(--iob-c1), var(--iob-c2)); }
+.iob-badge { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: .25rem .65rem; border-radius: 999px; background: rgba(255,255,255,.18); color: var(--iob-fg); border: 1px solid rgba(255,255,255,.35); }
+.iob-title { font-size: 1.6rem; font-weight: 800; margin: .6rem 0 .4rem; line-height: 1.15; color: var(--iob-fg); }
+.iob-text { margin: 0 0 .9rem; opacity: .92; color: var(--iob-fg); }
+.iob-prices { margin: 0 0 .9rem; display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; color: var(--iob-fg); }
+.iob-prices del { opacity: .7; font-size: 1.1rem; }
+.iob-prices strong { font-size: 2rem; font-weight: 900; }
+.iob-prices small { opacity: .85; }
+.iob-until { font-size: .85rem; opacity: .85; margin: 0 0 .8rem; color: var(--iob-fg); }
+.iob-legal { font-size: .75rem; opacity: .75; margin: .8rem 0 0; color: var(--iob-fg); }
+
+.iob-coupon { display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 1rem; padding: .35rem .4rem .35rem .8rem; border: 2px dashed rgba(255,255,255,.6); border-radius: 10px; flex-wrap: wrap; }
+.iob-coupon code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1.05rem; font-weight: 800; letter-spacing: .08em; background: none; color: var(--iob-fg); padding: 0; }
+.iob-copy { border: 0; cursor: pointer; font: inherit; font-size: .8rem; font-weight: 700; padding: .35rem .7rem; border-radius: 7px; background: rgba(255,255,255,.95); color: #111; }
+
+.iob-cta { display: inline-flex; align-items: center; justify-content: center; padding: .85rem 1.5rem; border-radius: 999px; font-weight: 800; text-decoration: none !important; background: #fff; color: #111 !important; box-shadow: 0 10px 25px rgba(0,0,0,.25); transition: transform .15s; }
+.iob--style-gold .iob-cta { background: var(--iob-fg); }
+.iob-cta:hover { transform: translateY(-2px); }
+.iob-cta:focus-visible, .iob-close:focus-visible, .iob-copy:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+.iob-close { position: absolute; top: .5rem; right: .6rem; width: 36px; height: 36px; border: 0; border-radius: 50%; background: rgba(0,0,0,.2); color: var(--iob-fg); font-size: 1.5rem; line-height: 1; cursor: pointer; z-index: 2; }
+.iob-close:hover { background: rgba(0,0,0,.35); }
+
+/* Compte à rebours */
+.iob-countdown { margin: 0 0 1rem; color: var(--iob-fg); }
+.iob-countdown__label { display: block; font-size: .8rem; opacity: .85; margin-bottom: .35rem; }
+.iob-countdown__units { display: inline-flex; gap: .4rem; }
+.iob-countdown__units span { display: flex; flex-direction: column; align-items: center; min-width: 48px; padding: .35rem .3rem; border-radius: 8px; background: rgba(0,0,0,.22); }
+.iob-countdown__units b { font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.iob-countdown__units small { font-size: .65rem; opacity: .8; text-transform: uppercase; }
+
+/* Popup + popup de sortie */
+.iob--popup, .iob--exit { position: fixed; inset: 0; z-index: 99999; display: grid; place-items: center; padding: 1rem; }
+.iob-overlay { position: absolute; inset: 0; background: rgba(5, 5, 20, .7); backdrop-filter: blur(3px); }
+.iob-dialog { position: relative; width: min(100%, 460px); max-height: calc(100vh - 2rem); overflow: auto; border-radius: 22px; box-shadow: 0 30px 80px rgba(0,0,0,.5); text-align: center; animation: iob-pop .35s cubic-bezier(.2,.9,.3,1.2); }
+.iob-dialog:focus { outline: none; }
+.iob-dialog .iob-body { padding: 2rem 1.75rem 1.75rem; }
+.iob-dialog .iob-img { width: 100%; height: 170px; object-fit: cover; display: block; }
+.iob-dialog .iob-prices, .iob-dialog .iob-countdown__units { justify-content: center; }
+.iob-dialog .iob-cta { width: 100%; }
+
+/* Slide-in */
+.iob--slidein { position: fixed; right: 1rem; bottom: 1rem; z-index: 99990; width: min(calc(100% - 2rem), 360px); animation: iob-slide .4s ease-out; }
+.iob--slidein .iob-card { border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+.iob--slidein .iob-body { padding: 1.4rem 1.3rem 1.3rem; }
+.iob--slidein .iob-title { font-size: 1.25rem; padding-right: 1.5rem; }
+.iob--slidein .iob-cta { width: 100%; }
+body:has(.wa-float) .iob--slidein { bottom: 5.5rem; }
+
+/* Barre d'annonce */
+.iob--topbar { position: relative; z-index: 99980; }
+.iob--topbar .iob-card { padding: .55rem 3rem .55rem 1rem; }
+.iob-topbar__inner { display: flex; align-items: center; justify-content: center; gap: .5rem 1rem; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+.iob-topbar__text { margin: 0; font-size: .95rem; color: var(--iob-fg); }
+.iob--topbar .iob-coupon { margin: 0; padding: .15rem .25rem .15rem .6rem; }
+.iob--topbar .iob-coupon span { display: none; }
+.iob--topbar .iob-coupon code { font-size: .9rem; }
+.iob--topbar .iob-cta { padding: .4rem 1rem; font-size: .9rem; box-shadow: none; }
+.iob--topbar .iob-countdown { margin: 0; }
+.iob--topbar .iob-countdown__label { display: none; }
+.iob--topbar .iob-countdown__units span { min-width: 0; flex-direction: row; gap: .1rem; padding: .15rem .4rem; }
+.iob--topbar .iob-countdown__units b { font-size: .9rem; }
+.iob--topbar .iob-close { top: 50%; transform: translateY(-50%); width: 30px; height: 30px; font-size: 1.2rem; }
+
+/* Bannière de page + shortcode */
+.iob--banner, .iob--inline { margin: 1.5rem auto; width: min(100% - 2.5rem, 1200px); }
+.iob--banner .iob-card, .iob--inline .iob-card { display: flex; align-items: stretch; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 60px -20px rgba(0,0,0,.6); }
+.iob--banner .iob-body, .iob--inline .iob-body { padding: clamp(1.5rem, 4vw, 2.5rem); flex: 1; }
+.iob--banner .iob-title, .iob--inline .iob-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+.iob--banner .iob-img, .iob--inline .iob-img { width: 40%; object-fit: cover; }
+.iob--inline { width: 100%; }
+@media (max-width: 700px) { .iob--banner .iob-card, .iob--inline .iob-card { flex-direction: column; } .iob--banner .iob-img, .iob--inline .iob-img { width: 100%; height: 160px; } }
+
+@keyframes iob-pop { from { opacity: 0; transform: scale(.9) translateY(10px); } }
+@keyframes iob-slide { from { opacity: 0; transform: translateY(30px); } }
+@media (prefers-reduced-motion: reduce) { .iob-dialog, .iob--slidein { animation: none; } }
