@@ -45,3 +45,11 @@ Projet : site vitrine haut de gamme, ultrarapide, orienté **acquisition de lead
 3. Activer le thème → les CPT `realisations` et `avis_clients` + taxonomies apparaissent.
 4. Renseigner l'entreprise dans `inc/schema-jsonld.php` (`rp_business_data()`).
 5. Suivre la checklist `docs/06-execution-plan.md`.
+
+---
+
+## Autre projet de ce dépôt : Revivo (Java · Spring Boot · Kafka · React)
+
+Le dossier [`revivo/`](revivo/README.md) contient une marketplace de seconde main event-driven complète
+(microservices Spring Boot, Apache Kafka, PostgreSQL, SPA React/TypeScript, Docker Compose, CI GitHub Actions).
+Voir [revivo/README.md](revivo/README.md).

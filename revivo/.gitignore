@@ -1,0 +1,15 @@
+# Java / Maven
+target/
+*.class
+data/
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+# IDE / OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+# Secrets
+.env

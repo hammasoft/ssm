@@ -1,0 +1,89 @@
+server:
+  port: ${PORT:8081}
+  forward-headers-strategy: framework
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: marketplace-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/revivo_marketplace}
+    username: ${DB_USER:revivo}
+    password: ${DB_PASSWORD:revivo}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc.time_zone: UTC
+        default_batch_fetch_size: 50
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 25MB
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      properties:
+        enable.idempotence: true
+        delivery.timeout.ms: 15000
+        request.timeout.ms: 5000
+        max.block.ms: 5000
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+
+revivo:
+  security:
+    # Clé HMAC-SHA256 en Base64 (≥ 256 bits). À surcharger en production via JWT_SECRET.
+    jwt-secret: ${JWT_SECRET:cmV2aXZvLWRldi1zZWNyZXQtY2hhbmdlLW1lLWluLXByb2R1Y3Rpb24tcGxlYXNlLTEyMzQ1Njc4OTA=}
+    access-token-ttl: 15m
+    refresh-token-ttl: 7d
+    cors-allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000}
+  storage:
+    upload-dir: ${UPLOAD_DIR:./data/uploads}
+  fees:
+    protection-fixed: 0.50
+    protection-rate: 0.04
+    relay-point-shipping: 3.49
+    home-delivery-shipping: 5.99
+  offers:
+    min-ratio: 0.30
+    pending-ttl: 48h
+    accepted-ttl: 24h
+  orders:
+    auto-complete-after: 48h
+  outbox:
+    poll-interval-ms: 1000
+    batch-size: 100
+  demo-data: ${DEMO_DATA:true}
+
+logging:
+  level:
+    com.revivo: INFO
+    org.apache.kafka: WARN
