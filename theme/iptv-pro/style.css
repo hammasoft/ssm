@@ -1,0 +1,16 @@
+/*
+Theme Name:  IPTV Pro
+Theme URI:   https://example.com/
+Description: Thème WordPress premium pour un service d'abonnement IPTV : landing page orientée conversion, grille tarifaire, guides d'installation (IPTV Smarters Pro, Smart TV, Firestick, Android, iOS), FAQ, SEO avancé (balises meta, Open Graph, JSON-LD Organization / WebSite / Product / FAQPage / HowTo / BreadcrumbList), performance Core Web Vitals. Aucun plugin requis.
+Author:      Hammasoft
+Version:     1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+Text Domain: iptv-pro
+License:     GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags:        one-column, custom-menu, custom-logo, featured-images, translation-ready, blog
+*/
+
+/* Les styles sont dans assets/css/main.css (chargé via functions.php). */

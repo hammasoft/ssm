@@ -45,3 +45,10 @@ Projet : site vitrine haut de gamme, ultrarapide, orienté **acquisition de lead
 3. Activer le thème → les CPT `realisations` et `avis_clients` + taxonomies apparaissent.
 4. Renseigner l'entreprise dans `inc/schema-jsonld.php` (`rp_business_data()`).
 5. Suivre la checklist `docs/06-execution-plan.md`.
+
+---
+
+## Thème IPTV Pro (abonnement IPTV)
+
+Thème WordPress autonome pour un service d'abonnement IPTV : `theme/iptv-pro/`
+(documentation : `theme/iptv-pro/README.md`). Zip prêt à téléverser : **`dist/iptv-pro.zip`**.
