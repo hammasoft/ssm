@@ -1,3 +1,6 @@
+> **Nouveau — site d'urgence plomberie / chauffage « Beffroi Dépannage » (Nord-Pas-de-Calais)** :
+> thème `theme/beffroi-depannage/`, étude SEO et installation dans `docs/plomberie-urgence/`.
+
 # Site WordPress BTP / Rénovation — Architecture & Kit de démarrage
 
 Projet : site vitrine haut de gamme, ultrarapide, orienté **acquisition de leads**

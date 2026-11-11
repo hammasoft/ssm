@@ -1,0 +1,15 @@
+/*
+Theme Name:  Beffroi Dépannage
+Theme URI:   https://beffroi-depannage.fr/
+Description: Thème WordPress léger pour un artisan plombier-chauffagiste d'urgence (Nord-Pas-de-Calais).
+             Orienté appel immédiat (bouton d'appel collant), SEO local (Plumber JSON-LD, FAQ),
+             et livré avec 19 articles optimisés importables en un clic.
+Author:      Hammasoft
+Version:     1.0.0
+Requires at least: 6.4
+Requires PHP: 8.1
+Text Domain: beffroi
+License:     GPL-2.0-or-later
+*/
+
+/* Les styles de production sont dans /assets/css/app.css (chargés par inc/setup.php). */
